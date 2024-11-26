@@ -77,7 +77,7 @@ namespace PdsCanary.Common
             return log;
         }
 
-        public static IServiceCollection ConfigureHvccServices<TJob, TConfig>(
+        public static IServiceCollection ConfigurePdsServices<TJob, TConfig>(
             this IServiceCollection services,
             TConfig config
         ) where TJob : BaseMessageJob

@@ -46,5 +46,10 @@ namespace PdsCanary.Common
         /// The cron string for how often to chirp.
         /// </summary>
         string CronString { get; }
+
+        /// <summary>
+        /// The URL to post to.  Default's to blue sky's.
+        /// </summary>
+        Uri Url { get; }
     }
 }

@@ -45,6 +45,7 @@ namespace PdsCanary.Bsky
                 log?.Warning( $"Telegram message did not send:{Environment.NewLine}{e}" );
             }
 
+            using var httpClient = new BskyHttpClientFactory( config );
             try
             {
                 log = HostingExtensions.CreateLog( config, OnTelegramFailure );
@@ -54,7 +55,8 @@ namespace PdsCanary.Bsky
                 builder.Logging.ClearProviders();
                 builder.Services.AddControllersWithViews();
                 builder.Host.UseSerilog( log );
-                builder.Services.ConfigureHvccServices<SkeetJob, PdsCanaryConfig>( config );
+                builder.Services.AddSingleton<IHttpClientFactory>( httpClient );
+                builder.Services.ConfigurePdsServices<SkeetJob, PdsCanaryConfig>( config );
                 builder.WebHost.UseUrls( $"http://0.0.0.0:{config.Port}" );
 
                 WebApplication app = builder.Build();

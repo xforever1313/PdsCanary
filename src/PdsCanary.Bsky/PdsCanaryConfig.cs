@@ -34,6 +34,10 @@ namespace PdsCanary.Bsky
             // Default to every hour on the hour.
             this.CronString = Environment.GetEnvironmentVariable( "CRON_STRING" ) ?? "0 0 * * * ?";
 
+            this.Url = new Uri(
+                Environment.GetEnvironmentVariable( "PDS_URL" ) ?? "https://bsky.social"
+            );
+
             {
                 string logFile = Environment.GetEnvironmentVariable( "LOG_FILE" ) ?? string.Empty;
                 if( string.IsNullOrWhiteSpace( logFile ) == false )
@@ -76,6 +80,8 @@ namespace PdsCanary.Bsky
         public string ApplicationContext => "HVCC Blue Sky Bot";
 
         public string CronString { get; }
+
+        public Uri Url { get; }
 
         // ---------------- Functions ----------------
 
