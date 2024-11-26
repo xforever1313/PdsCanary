@@ -51,9 +51,11 @@ namespace PdsCanary.Bsky
                 TimeZoneInfo.FindSystemTimeZoneById( "America/New_York" )
             );
 
+            var uptime = new TimeSpan( Environment.TickCount64 );
+
             // For some reason, need at least one hash tag for the message to get
             // sent to BlueSky?
-            string postText = GetMessageString( timeStamp, "HVCC" ) + Environment.NewLine + Environment.NewLine + "#HVCC";
+            string postText = GetMessageString( timeStamp, uptime );
 
             await this.client.Post( postText );
         }

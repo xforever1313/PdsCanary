@@ -91,13 +91,13 @@ namespace PdsCanary.Common
                     q.AddJob<TJob>( jobKey );
 
                     q.AddTrigger(
-                        ( ITriggerConfigurator config ) =>
+                        ( ITriggerConfigurator trigerConfig ) =>
                         {
-                            config.WithCronSchedule(
-                                $"0 0 * * * ?", // Fire every hour on the hour.
+                            trigerConfig.WithCronSchedule(
+                                config.CronString,
                                 ( CronScheduleBuilder cronBuilder ) =>
                                 {
-                                    // HVCC is in NY.
+                                    // Server is in NY.
                                     cronBuilder.InTimeZone( TimeZoneInfo.FindSystemTimeZoneById( "America/New_York" ) );
                                     // If we misfire, just do nothing.  This isn't exactly
                                     // the most important application
@@ -105,9 +105,9 @@ namespace PdsCanary.Common
                                     cronBuilder.Build();
                                 }
                             );
-                            config.WithDescription( $"Chime!" );
-                            config.ForJob( jobKey );
-                            config.StartNow();
+                            trigerConfig.WithDescription( $"Chirp!" );
+                            trigerConfig.ForJob( jobKey );
+                            trigerConfig.StartNow();
                         }
                     );
                 }

@@ -16,13 +16,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 //
 
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.SymbolStore;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace PdsCanary.Common
 {
     public interface IPdsCanaryConfig
@@ -48,5 +41,10 @@ namespace PdsCanary.Common
         string? TelegramChatId { get; }
 
         string ApplicationContext { get; }
+
+        /// <summary>
+        /// The cron string for how often to chirp.
+        /// </summary>
+        string CronString { get; }
     }
 }

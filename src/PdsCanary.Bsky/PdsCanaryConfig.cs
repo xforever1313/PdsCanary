@@ -31,6 +31,9 @@ namespace PdsCanary.Bsky
             this.BlueSkyUser = Environment.GetEnvironmentVariable( "BSKY_USER" ) ?? string.Empty;
             this.BlueSkyPassword = Environment.GetEnvironmentVariable( "BSKY_PASSWORD" ) ?? string.Empty;
 
+            // Default to every hour on the hour.
+            this.CronString = Environment.GetEnvironmentVariable( "CRON_STRING" ) ?? "0 0 * * * ?";
+
             {
                 string logFile = Environment.GetEnvironmentVariable( "LOG_FILE" ) ?? string.Empty;
                 if( string.IsNullOrWhiteSpace( logFile ) == false )
@@ -71,6 +74,8 @@ namespace PdsCanary.Bsky
         public string? TelegramChatId { get; }
 
         public string ApplicationContext => "HVCC Blue Sky Bot";
+
+        public string CronString { get; }
 
         // ---------------- Functions ----------------
 

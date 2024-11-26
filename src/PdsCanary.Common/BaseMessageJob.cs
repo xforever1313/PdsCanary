@@ -17,7 +17,6 @@
 //
 
 using System.Diagnostics;
-using System.Text;
 using Quartz;
 using Serilog;
 
@@ -26,8 +25,6 @@ namespace PdsCanary.Common
     public abstract class BaseMessageJob : IJob
     {
         // ---------------- Fields ----------------
-
-        private static readonly Stopwatch stopWatch = new Stopwatch();
 
         private readonly ILogger log;
 
@@ -46,17 +43,6 @@ namespace PdsCanary.Common
             {
                 DateTime timeStamp = context.FireTimeUtc.DateTime;
 
-                if( stopWatch.IsRunning )
-                {
-                    if( stopWatch.Elapsed <= TimeSpan.FromMinutes( 55 ) )
-                    {
-                        this.log.Warning( $"Fired {timeStamp} (UTC) too quickly, ignoring." );
-                        return;
-                    }
-                }
-
-                stopWatch.Restart();
-
                 log.Information( "Sending Message..." );
                 await SendMessage( timeStamp, context.CancellationToken );
                 log.Information( "Sending Message...Done!" );
@@ -69,30 +55,11 @@ namespace PdsCanary.Common
 
         protected abstract Task SendMessage( DateTime utcTime, CancellationToken cancelToken );
 
-        public static string GetMessageString( DateTime time, string location )
+        public static string GetMessageString( DateTime time, TimeSpan uptime )
         {
-            var tweet = new StringBuilder();
-            int hour = time.Hour;
-            if( hour == 0 )
-            {
-                hour = 12;
-            }
-            else if( hour >= 13 )
-            {
-                hour = hour - 12;
-            }
-
-            for( int i = 0; i < hour; ++i )
-            {
-                tweet.Append( "BONG! " );
-            }
-
-            tweet.Remove( tweet.Length - 1, 1 );
-            tweet.AppendLine();
-            tweet.AppendLine();
-            tweet.Append( $"The time in {location} currently is: {time.ToString( "dddd, MMMM d yyyy, h:00tt" )}." );
-
-            return tweet.ToString();
+            return
+                $"Chirp! The PDS at at.shendrick.net is still online as of: {time.ToString( "dddd, MMMM d yyyy, h:00tt" )} server time.{Environment.NewLine}" +
+                $"Server's been up for {uptime.Days} days, {uptime.Hours} hours. #Uptime";
         }
     }
 }
