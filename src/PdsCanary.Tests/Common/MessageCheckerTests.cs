@@ -46,8 +46,8 @@ namespace PdsCanary.Tests.Common
         public void CheckAt4PM()
         {
             // Setup
-            var time = new DateTime( 2022, 10, 31, 16, 0, 0, DateTimeKind.Local );
-            const string timeStamp = "Monday, October 31 2022, 4:00PM";
+            var time = new DateTime( 2022, 10, 31, 16, 45, 13, DateTimeKind.Local );
+            const string timeStamp = "Monday, October 31 2022, 4:45PM";
             var uptime = new TimeSpan( 3, 16, 23, 5 ); ;
 
             // Act / Check
@@ -70,9 +70,9 @@ namespace PdsCanary.Tests.Common
         public void CheckAt2PM()
         {
             // Setup
-            var time = new DateTime( 2022, 11, 20, 14, 0, 0, DateTimeKind.Local );
+            var time = new DateTime( 2022, 11, 20, 14, 12, 0, DateTimeKind.Local );
             var uptime = new TimeSpan( 1, 1, 29, 0 );
-            const string timeStamp = "Sunday, November 20 2022, 2:00PM";
+            const string timeStamp = "Sunday, November 20 2022, 2:12PM";
 
             // Act / Check
             DoGetMessageStringTest( time, uptime, timeStamp, 1, 1 );
@@ -82,9 +82,9 @@ namespace PdsCanary.Tests.Common
         public void CheckAt1PM()
         {
             // Setup
-            var time = new DateTime( 2022, 6, 19, 13, 0, 0, DateTimeKind.Local );
+            var time = new DateTime( 2022, 6, 19, 13, 59, 0, DateTimeKind.Local );
             var uptime = new TimeSpan( 1, 0, 0, 0 );
-            const string timeStamp = "Sunday, June 19 2022, 1:00PM";
+            const string timeStamp = "Sunday, June 19 2022, 1:59PM";
 
             // Act / Check
             DoGetMessageStringTest( time, uptime, timeStamp, 1, 0 );

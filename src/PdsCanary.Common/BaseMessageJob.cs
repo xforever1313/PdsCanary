@@ -58,7 +58,7 @@ namespace PdsCanary.Common
         public static string GetMessageString( DateTime time, TimeSpan uptime )
         {
             return
-                $"Chirp! The PDS at at.shendrick.net is still online as of: {time.ToString( "dddd, MMMM d yyyy, h:00tt" )} server time.{Environment.NewLine}" +
+                $"Chirp! The PDS at at.shendrick.net is still online as of: {time.ToString( "dddd, MMMM d yyyy, h:mmtt" )} server time.{Environment.NewLine}" +
                 $"Server's been up for {uptime.Days} days, {uptime.Hours} hours. #Uptime";
         }
     }
