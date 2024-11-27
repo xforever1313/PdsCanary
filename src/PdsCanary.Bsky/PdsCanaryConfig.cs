@@ -65,7 +65,7 @@ namespace PdsCanary.Bsky
 
         // ---------------- Properties ----------------
 
-        public int Port => 9100;
+        public int Port => 9105;
 
         public string BlueSkyUser { get; }
 
@@ -77,7 +77,7 @@ namespace PdsCanary.Bsky
 
         public string? TelegramChatId { get; }
 
-        public string ApplicationContext => "HVCC Blue Sky Bot";
+        public string ApplicationContext => "PDS Canary Bot";
 
         public string CronString { get; }
 

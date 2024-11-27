@@ -30,16 +30,17 @@ namespace PdsCanary.Bsky
 
         // ---------------- Constructor ----------------
 
-        public SkeetJob( Serilog.ILogger log, PdsCanaryConfig hvccConfig, IHttpClientFactory httpClient ) :
+        public SkeetJob( Serilog.ILogger log, PdsCanaryConfig config, IHttpClientFactory httpClient ) :
             base( log )
         {
             var microsoftLogger = new SerilogLoggerFactory( log );
             this.client = new BlueskyClient(
                 httpClient,
-                hvccConfig.BlueSkyUser,
-                hvccConfig.BlueSkyPassword,
+                config.BlueSkyUser,
+                config.BlueSkyPassword,
                 new string[] { "en", "en-US" },
                 true,
+                config.Url,
                 microsoftLogger.CreateLogger<BlueskyClient>()
             );
         }

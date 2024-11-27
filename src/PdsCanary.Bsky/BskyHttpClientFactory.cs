@@ -97,9 +97,6 @@ namespace PdsCanary.Bsky
                 request.Headers.UserAgent.Clear();
                 request.Headers.UserAgent.Add( new ProductInfoHeaderValue( "at_shendrick_net_PDS_canary", assemblyVersion?.ToString( 3 ) ) );
 
-                Uri newUri = new Uri( request.RequestUri.AbsoluteUri.Replace( "https://bsky.social", this.config.Url.ToString().TrimEnd( '/' ) ) );
-                request.RequestUri = newUri;
-
                 return await base.SendAsync( request, cancellationToken );
             }
         }

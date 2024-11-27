@@ -14,12 +14,12 @@
 	<PackageReference Include="prometheus-net.AspNetCore" />
 	<PackageReference Include="Serilog" />
 	<PackageReference Include="Serilog.AspNetCore" />
-	<!--<PackageReference Include="X.Bluesky" />-->
+	<PackageReference Include="X.Bluesky" />
   </ItemGroup>
 
   <ItemGroup>
 	<ProjectReference Include="..\..\sethcs\LibSethCS\LibSethCS.csproj" />
 	<ProjectReference Include="..\PdsCanary.Common\PdsCanary.Common.csproj" />
-	<ProjectReference Include="..\..\X.Bluesky\src\X.Bluesky\X.Bluesky.csproj" />
+	<!--<ProjectReference Include="..\..\X.Bluesky\src\X.Bluesky\X.Bluesky.csproj" />-->
   </ItemGroup>
 </Project>
