@@ -53,7 +53,7 @@ namespace PdsCanary.Bsky
                 TimeZoneInfo.FindSystemTimeZoneById( "America/New_York" )
             );
 
-            var uptime = new TimeSpan( Environment.TickCount64 );
+            var uptime = TimeSpan.FromMilliseconds( Environment.TickCount64 );
 
             // For some reason, need at least one hash tag for the message to get
             // sent to BlueSky?
