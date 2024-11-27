@@ -57,6 +57,7 @@ OpenCover/
 # IDEs
 .vscode
 .vs
+.idea
 
 # Secrets
 .env
