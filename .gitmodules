@@ -1,6 +1,3 @@
 [submodule "sethcs"]
 	path = sethcs
 	url = https://github.com/xforever1313/sethcs.git
-[submodule "X.Bluesky"]
-	path = X.Bluesky
-	url = https://github.com/xforever1313/X.Bluesky.git
