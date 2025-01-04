@@ -3,6 +3,10 @@
 This is a Blue Sky bot that attempts to post to a given Blue Sky PDS.
 If the message appears in the Blue Sky UI, then the PDS is online and accepting posts.
 
+# Deprecated Software
+
+This software is no longer maintained, and has been recreated as a plugin of [Rau](https://github.com/xforever1313/Rau), a PDS bot framework.  While this software should still work just fine, all future updates will come from Rau.  The plugin documentation is located [here](https://github.com/xforever1313/Rau/tree/main/src/Plugins/Rau.Plugins.Canary).
+
 ## Configuration
 
 Set the following as Environment Variables
